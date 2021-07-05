@@ -45,14 +45,6 @@ jobs:
         MsixPackageDisplayName: MyWPFApp (Prod)
         MsixBuildMode: SideLoadOnly
         MsixGenerateAppInstaller: true
-      Channel_Prod_Store:
-        ChannelName: Prod-Store
-        DistributionUrl: https://not/used
-        MsixPackageId: MyWPFApp
-        MsixPublisherId: CN=E40A5878-9BC7-45A3-BBFC-B988EA6795B5
-        MsixPackageDisplayName: MyWPFApp (Store)
-        MsixBuildMode: CI
-        MsixGenerateAppInstaller: false
 
   steps:
   - task: UseDotNet@2

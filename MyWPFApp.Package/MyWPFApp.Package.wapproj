@@ -56,10 +56,10 @@
     <AppInstallerUri>https://mywpfapp.z5.web.core.windows.net/CD</AppInstallerUri>
     <AppxBundle>Never</AppxBundle>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <EntryPointProjectUniqueName>..\MyWPFApp\MyWPFApp.csproj</EntryPointProjectUniqueName>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <EntryPointProjectUniqueName>..\MyWPFApp\MyWPFApp.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -71,12 +71,7 @@
     <Content Include="Package.appinstaller" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
-      <DesktopBridgeSelfContained>True</DesktopBridgeSelfContained>
-      <DesktopBridgeIdentifier>win-x86</DesktopBridgeIdentifier>
-      <Properties>SelfContained=%(DesktopBridgeSelfContained);RuntimeIdentifier=%(DesktopBridgeIdentifier);PublishReadyToRun=true</Properties>
-      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
-    </ProjectReference>
+    <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>
