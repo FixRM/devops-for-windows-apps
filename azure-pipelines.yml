@@ -32,17 +32,17 @@ jobs:
       Channel_CD_Web:
         ChannelName: CD-Web
         DistributionUrl: https://mywpfapp.azurewebsites.net/CD
-        MsixPackageId: MyWPFApp.DevOpsDemo.CD
+        MsixPackageId: LM.USD.Launcher.DevOpsDemo.CD
         MsixPublisherId: CN=build
-        MsixPackageDisplayName: MyWPFApp (CD)
+        MsixPackageDisplayName: LM.USD.Launcher (CD)
         MsixBuildMode: SideLoadOnly
         MsixGenerateAppInstaller: true
       Channel_Prod_Web:
         ChannelName: Prod-Web
         DistributionUrl: https://mywpfapp.z5.web.core.windows.net/Prod
-        MsixPackageId: MyWPFApp.DevOpsDemo
+        MsixPackageId: LM.USD.Launcher.DevOpsDemo
         MsixPublisherId: CN=build
-        MsixPackageDisplayName: MyWPFApp (Prod)
+        MsixPackageDisplayName: LM.USD.Launcher (Prod)
         MsixBuildMode: SideLoadOnly
         MsixGenerateAppInstaller: true
 
@@ -71,7 +71,7 @@ jobs:
       $manifest.Package.Identity.Publisher = "$(MsixPublisherId)"
       $manifest.Package.Properties.DisplayName = "$(MsixPackageDisplayName)"
       $manifest.Package.Applications.Application.VisualElements.DisplayName = "$(MsixPackageDisplayName)"
-      $manifest.save(".\MyWPFApp.Package\Package.appxmanifest")
+      $manifest.save(".\LM.USD.Launcher\Package.appxmanifest")
 
     displayName: Update manifest version
 
@@ -84,23 +84,23 @@ jobs:
       configuration: $(BuildConfiguration)
       maximumCpuCount: false
 
-  #- script: copy build.cer MyWPFApp.Package\AppPackages\MyWPFApp.Package_$(GitBuildVersionSimple).0_x86_Test\MyWPFApp.Package_$(GitBuildVersionSimple).0_x86.cer
+  #- script: copy build.cer LM.USD.Launcher\AppPackages\LM.USD.Launcher_$(GitBuildVersionSimple).0_x86_Test\LM.USD.Launcher_$(GitBuildVersionSimple).0_x86.cer
   #  displayName: Copy Certificate to versioned dir
   #  condition: and(succeeded(), not(eq(variables['ChannelName'], 'Prod-Store')))
 
-  #- task: PublishPipelineArtifact@0
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: $(ChannelName)
+      targetPath: LM.USD.Launcher/AppPackages
+
+  #- task: CopyFiles@2
+  #  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   #  inputs:
-  #    artifactName: $(ChannelName)
-  #    targetPath: MyWPFApp.Package/AppPackages
+  #    SourceFolder: '$(system.defaultworkingdirectory)'
+  #    Contents: '**\bin\$(BuildConfiguration)\**'
+  #    TargetFolder: '$(build.artifactstagingdirectory)'
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-    inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)'
-      Contents: '**\bin\$(BuildConfiguration)\**'
-      TargetFolder: '$(build.artifactstagingdirectory)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-    inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)'
+  #- task: PublishBuildArtifacts@1
+  #  displayName: 'Publish Artifact: drop'
+  #  inputs:
+  #    PathtoPublish: '$(build.artifactstagingdirectory)'
