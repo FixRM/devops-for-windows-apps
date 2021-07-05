@@ -65,7 +65,7 @@ jobs:
   - powershell: |
       # Update appxmanifest. This must be done before build.
       # Set the per-channel values into the appxmanifest, replacing the checked-in values
-      [xml]$manifest= get-content ".\MyWPFApp.Package\Package.appxmanifest"
+      [xml]$manifest= get-content ".\LM.USD.Launcher\Package.appxmanifest"
       $manifest.Package.Identity.Version = "$(GitBuildVersionSimple).0"
       $manifest.Package.Identity.Name = "$(MsixPackageId)"
       $manifest.Package.Identity.Publisher = "$(MsixPublisherId)"
@@ -74,17 +74,6 @@ jobs:
       $manifest.save(".\MyWPFApp.Package\Package.appxmanifest")
 
     displayName: Update manifest version
-
-  - powershell: |
-      # Update App Insights instrumentation key
-      [xml]$doc = Get-Content ".\MyWPFApp\ApplicationInsights.config"
-      $doc.ApplicationInsights.InstrumentationKey = "$(AppInsightsKey)"
-      $doc.save(".\MyWPFApp\ApplicationInsights.config")
-
-    displayName: Set AppInsights Config
-    env:
-      AppInsightsKey: $(AppInsightsKey)
-    condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['AppInsightsKey'], '')))
 
   - task: MSBuild@1
     displayName: Build for $(BuildConfiguration)
@@ -95,12 +84,23 @@ jobs:
       configuration: $(BuildConfiguration)
       maximumCpuCount: false
 
-  - script: copy build.cer MyWPFApp.Package\AppPackages\MyWPFApp.Package_$(GitBuildVersionSimple).0_x86_Test\MyWPFApp.Package_$(GitBuildVersionSimple).0_x86.cer
-    displayName: Copy Certificate to versioned dir
-    condition: and(succeeded(), not(eq(variables['ChannelName'], 'Prod-Store')))
+  #- script: copy build.cer MyWPFApp.Package\AppPackages\MyWPFApp.Package_$(GitBuildVersionSimple).0_x86_Test\MyWPFApp.Package_$(GitBuildVersionSimple).0_x86.cer
+  #  displayName: Copy Certificate to versioned dir
+  #  condition: and(succeeded(), not(eq(variables['ChannelName'], 'Prod-Store')))
 
-  - task: PublishPipelineArtifact@0
+  #- task: PublishPipelineArtifact@0
+  #  inputs:
+  #    artifactName: $(ChannelName)
+  #    targetPath: MyWPFApp.Package/AppPackages
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
     inputs:
-      artifactName: $(ChannelName)
-      targetPath: MyWPFApp.Package/AppPackages
+      SourceFolder: '$(system.defaultworkingdirectory)'
+      Contents: '**\bin\$(BuildConfiguration)\**'
+      TargetFolder: '$(build.artifactstagingdirectory)'
 
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
