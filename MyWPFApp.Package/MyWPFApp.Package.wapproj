@@ -59,7 +59,6 @@
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <EntryPointProjectUniqueName>..\MyWPFApp\MyWPFApp.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -69,9 +68,6 @@
   <ItemGroup>
     <Content Include="Images\*" />
     <Content Include="Package.appinstaller" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>
