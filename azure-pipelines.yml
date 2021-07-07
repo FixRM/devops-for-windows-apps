@@ -25,7 +25,8 @@ variables:
 jobs:
 - job: Build
   pool:
-    vmImage: windows-2019
+    #vmImage: windows-2019
+    name: 'default'
 
   strategy:
     matrix:
