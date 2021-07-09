@@ -57,7 +57,7 @@ jobs:
     inputs:
       command: custom
       custom: tool
-      arguments: install --tool-path . nbgv
+      arguments: update --tool-path . nbgv
     displayName: Install NBGV tool
 
   - script: nbgv cloud -c -a
