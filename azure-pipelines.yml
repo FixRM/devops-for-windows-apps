@@ -34,7 +34,7 @@ jobs:
         ChannelName: CD-Web
         DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/RC
         MsixPackageId: LM.USD.Launcher.DevOpsDemo.CD
-        MsixPublisherId: CN=build
+        MsixPublisherId: CN=agrunin
         MsixPackageDisplayName: LM.USD.Launcher (CD)
         MsixBuildMode: SideLoadOnly
         MsixGenerateAppInstaller: true
@@ -42,7 +42,7 @@ jobs:
         ChannelName: Prod-Web
         DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/
         MsixPackageId: LM.USD.Launcher.DevOpsDemo
-        MsixPublisherId: CN=build
+        MsixPublisherId: CN=agrunin
         MsixPackageDisplayName: LM.USD.Launcher (Prod)
         MsixBuildMode: SideLoadOnly
         MsixGenerateAppInstaller: true
