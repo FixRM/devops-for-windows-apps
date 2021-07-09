@@ -33,14 +33,14 @@ jobs:
 
   strategy:
     matrix:
-      Channel_CD_Web:
-        ChannelName: CD-Web
-        DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/RC
-        MsixPackageId: LM.USD.Launcher.DevOpsDemo.CD
-        MsixPublisherId: CN=agrunin
-        MsixPackageDisplayName: LM.USD.Launcher (CD)
-        MsixBuildMode: SideLoadOnly
-        MsixGenerateAppInstaller: true
+      #Channel_CD_Web:
+      #  ChannelName: CD-Web
+      #  DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/RC
+      #  MsixPackageId: LM.USD.Launcher.DevOpsDemo.CD
+      #  MsixPublisherId: CN=agrunin
+      #  MsixPackageDisplayName: LM.USD.Launcher (CD)
+      #  MsixBuildMode: SideLoadOnly
+      #  MsixGenerateAppInstaller: true
       Channel_Prod_Web:
         ChannelName: Prod-Web
         DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/
