@@ -49,9 +49,9 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: 'Use .NET Core SDK 3.0.x'
+    displayName: 'Use .NET SDK 5.x'
     inputs:
-      version: 3.0.x
+      version: 5.x
 
   - task: DotNetCoreCLI@2
     inputs:
