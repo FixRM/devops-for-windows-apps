@@ -32,7 +32,7 @@ jobs:
     matrix:
       Channel_CD_Web:
         ChannelName: CD-Web
-        DistributionUrl: https://mywpfapp.azurewebsites.net/CD
+        DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/RC
         MsixPackageId: LM.USD.Launcher.DevOpsDemo.CD
         MsixPublisherId: CN=build
         MsixPackageDisplayName: LM.USD.Launcher (CD)
@@ -40,7 +40,7 @@ jobs:
         MsixGenerateAppInstaller: true
       Channel_Prod_Web:
         ChannelName: Prod-Web
-        DistributionUrl: https://mywpfapp.z5.web.core.windows.net/Prod
+        DistributionUrl: http://drucrmb.hq.ru.corp.leroymerlin.com:5555/
         MsixPackageId: LM.USD.Launcher.DevOpsDemo
         MsixPublisherId: CN=build
         MsixPackageDisplayName: LM.USD.Launcher (Prod)
