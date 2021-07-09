@@ -88,9 +88,9 @@ jobs:
       configuration: $(BuildConfiguration)
       maximumCpuCount: false
 
-  #- script: copy build.cer LM.USD.Launcher\AppPackages\LM.USD.Launcher_$(GitBuildVersionSimple).0_x86_Test\LM.USD.Launcher_$(GitBuildVersionSimple).0_x86.cer
-  #  displayName: Copy Certificate to versioned dir
-  #  condition: and(succeeded(), not(eq(variables['ChannelName'], 'Prod-Store')))
+  - script: copy build.cer LM.USD.Launcher\AppPackages\LM.USD.Launcher_$(GitBuildVersionSimple).0_x86_Test\LM.USD.Launcher_$(GitBuildVersionSimple).0_x86.cer
+    displayName: Copy Certificate to versioned dir
+    condition: and(succeeded(), not(eq(variables['ChannelName'], 'Prod-Store')))
 
   - task: PublishPipelineArtifact@0
     inputs:
