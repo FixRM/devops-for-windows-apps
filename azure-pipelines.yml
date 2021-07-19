@@ -72,7 +72,7 @@ jobs:
       [xml]$manifest= get-content ".\LM.USD.Launcher\Package.appxmanifest"
       $manifest.Package.Identity.Version = "$(GitBuildVersionSimple).0"
       $manifest.Package.Identity.Name = "$(MsixPackageId)"
-      $manifest.Package.Identity.Publisher = "$(MsixPublisherId)"
+      #$manifest.Package.Identity.Publisher = "$(MsixPublisherId)"
       $manifest.Package.Properties.DisplayName = "$(MsixPackageDisplayName)"
       $manifest.Package.Applications.Application.VisualElements.DisplayName = "$(MsixPackageDisplayName)"
       $manifest.save(".\LM.USD.Launcher\Package.appxmanifest")
