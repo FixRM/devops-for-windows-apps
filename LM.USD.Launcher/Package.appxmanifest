@@ -15,7 +15,7 @@
 
   <Properties>
     <DisplayName>LM.USD.Lancher</DisplayName>
-    <PublisherDisplayName>agrunin</PublisherDisplayName>
+    <PublisherDisplayName>CN=GMCS_LM</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
