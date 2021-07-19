@@ -25,8 +25,8 @@ variables:
 jobs:
 - job: Build
   workspace:
-    # Каждая пакет собирается в отдельную папку, поэтому приходится удалять прошлые сборки
-    clean: outputs
+    # Каждый пакет установщика собирается в отдельную папку, поэтому приходится удалять прошлые сборки
+    clean: all #outputs
   pool:
     #vmImage: windows-2019
     name: 'default'
