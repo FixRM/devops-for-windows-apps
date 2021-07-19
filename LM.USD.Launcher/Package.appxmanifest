@@ -8,7 +8,7 @@
 
   <Identity
     Name="e3352bc3-8b6d-44c4-95dd-00e84c989a0d"
-    Publisher="CN=agrunin"
+    Publisher="CN=GMCS_LM, O=GMCS Test Cert, C=RU"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="e3352bc3-8b6d-44c4-95dd-00e84c989a0d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
